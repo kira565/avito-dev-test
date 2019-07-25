@@ -66,8 +66,8 @@ const productsReducer = (state = initialState, action) => {
         case FILTER_DATA: {
             return {
                 ...state,
-                filterFrom: action.from,
-                filterTo: action.to
+                filterFrom: Number(action.from),
+                filterTo: Number(action.to)
             }
         }
         case RESET_FILTER: {

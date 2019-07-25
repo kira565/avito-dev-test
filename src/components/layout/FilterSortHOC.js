@@ -54,51 +54,22 @@ export const FilterSortHoc = (Component) => {
             this.props.dataArraySort(value.sortFormat)
         };
 
+        handleFilterSortFunc = (dataArr, filterType, from, to, sortType) => {
+            return dataArr.filter(el => {
+                const typeMatch = filterType !== 'none' ? el.category === filterType : dataArr;
+                const priceParam = (to === null && from === null && dataArr) || (isNaN(from) && el.price <= to) || (isNaN(to) && el.price >= from)
+                    || (!isNaN(from) && !isNaN(to) && el.price >= from && el.price <= to);
 
-        handleFilter = (filterArr, filterType) => {
-            if (filterType === 'none') {
-                return filterArr
-            } else {
-                return filterArr.filter(el => el.category === filterType)
-            }
-        };
-        handleSort = (sortArr, sortType) => {
-            switch (sortType) {
-                case 'byDefault': {
-                    return sortArr.sort((a, b) => { return a.id - b.id })
+                return typeMatch && priceParam
+            }).sort((productA, productB) => {
+                if (sortType === 'byDefault'){
+                    return productA.id - productB.id
+                } else if (sortType === 'byPrice' ){
+                    return (productA.price && productB.price) && productA.price - productB.price
+                } else if (sortType === 'byDate') {
+                    return productA.date - productB.date
                 }
-                case 'byPrice': {
-                    return sortArr.sort((a, b) => { return a.price - b.price })
-                }
-                case 'byDate': {
-                    return sortArr.sort((a, b) => { return  a.date - b.date})
-                }
-                default:
-                    return sortArr
-            }
-        };
-
-        handleFilterSort = (filterArr, filterType, from, to, sortType) => {
-            if (filterType !== 'localStorageNoFilter') {
-                let filtred = this.handleFilter(filterArr, filterType);
-                let filtredSorted = this.handleSort(filtred, sortType);
-
-                if (to === null && from === null) {
-                    return filtredSorted
-                }
-                if (to === undefined && from === undefined) {
-                    return filtredSorted
-                }
-                if (to === undefined) {
-                    return filtredSorted.filter(el => el.price >= from)
-                }
-                if (from === undefined) {
-                    return filtred.filter(el => el.price <= to)
-                }
-                if (from !== undefined && to !== undefined) {
-                    return filtredSorted.filter(el => el.price >= from && el.price <= to)
-                }
-            }
+            })
         };
 
         render() {
@@ -112,7 +83,7 @@ export const FilterSortHoc = (Component) => {
                     <SortReduxForm onChange={this.handleOnChangeSort}/>
                 </div>
                 <div className={styles.layout__container}>
-                    <Component productsData={this.handleFilterSort(productsData, filterType, filterFrom, filterTo, sortType)}
+                    <Component productsData={this.handleFilterSortFunc(productsData, filterType, filterFrom, filterTo, sortType)}
                                isFetching={isFetching}
                                sellersData={sellersData}
                                setPageLogo={setPageLogo}
