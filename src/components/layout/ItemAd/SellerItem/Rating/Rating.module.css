@@ -1,0 +1,17 @@
+.star img{
+    width: 20px;
+    height: 20px;
+}
+.half_star img{
+    width: 10px;
+    height: 20px;
+}
+.rating {
+    margin-top: 3px;
+    margin-left: 15px;
+}
+.rating_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
