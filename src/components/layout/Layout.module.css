@@ -1,0 +1,20 @@
+.layout__container{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: max-content;
+}
+.filter__wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.form__input {
+    margin-right: 5px;
+}
+.custom__btn {
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    color: white;
+    width: 100px;
+}
+

@@ -1,0 +1,40 @@
+.main__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.main__block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.main__block a {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.main__links a {
+    color: #a1a1a1;
+}
+
+.main__block a:hover {
+    color: crimson;
+    opacity: 0.7;
+}
+
+.main__favourites {
+    margin-right: 30px;
+}
+
+.main__favourites img {
+    height: 35px;
+    width: 35px;
+}
+
+.main__ad, .main__registration {
+    margin-right: 15px;
+}

@@ -1,0 +1,26 @@
+.nav__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav__logo {
+    margin-right: 20px;
+}
+
+.nav__logo img {
+    width: 115px;
+    height: 40px;
+}
+
+.nav__panel a{
+    margin-right: 10px;
+    text-decoration: none;
+}
+.nav__panel a:hover{
+    opacity: 0.7;
+    color: crimson;
+}
+.active__link {
+    color: crimson;
+}

@@ -1,0 +1,9 @@
+.preloader__main {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+}
+.preloader__main img {
+    height: 200px;
+    width: 200px;
+}
