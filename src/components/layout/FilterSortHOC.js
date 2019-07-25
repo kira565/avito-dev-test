@@ -61,11 +61,11 @@ export const FilterSortHoc = (Component) => {
                     || (!isNaN(from) && !isNaN(to) && el.price >= from && el.price <= to);
 
                 return typeMatch && priceParam
-            }).sort((productA, productB) => {
+            }).map(el => ({...el, price: el.price || 0})).sort((productA, productB) => {
                 if (sortType === 'byDefault'){
                     return productA.id - productB.id
                 } else if (sortType === 'byPrice' ){
-                    return (productA.price && productB.price) && productA.price - productB.price
+                    return productA.price - productB.price
                 } else if (sortType === 'byDate') {
                     return productA.date - productB.date
                 }
