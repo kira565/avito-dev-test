@@ -100,27 +100,6 @@ export const FilterSortHoc = (Component) => {
                 }
             }
         };
-       /* filterSortFunc = (products, productsCategory, from, to, sortBy) => {
-            if (productsCategory !== 'localStorageNoFilter' && products) {
-                return products && products.filter(product => {
-                    const categoryMatch = product.category === productsCategory;
-                    const priceMatch = (to === undefined && (el => el.price >= from))
-                        || (from === undefined && (el => el.price <= to))
-                        || (from !== undefined && to !== undefined && (el => el.price >= from && el.price <= to));
-                    return categoryMatch && priceMatch
-                }).sort((productA, productB) => {
-                    if (sortBy === 'byDefault') {
-                        return productA.id - productB.id
-                    } else if (sortBy === 'byPrice') {
-                        return productA.price - productB.price
-                    } else if (sortBy === 'byDate') {
-                        return productA.date - productB.date
-                    }
-                    return products
-                });
-            }
-        };*/
-
 
         render() {
             const {isFetching, sellersData, setPageLogo, logo, filterType, productsData, filterTo, filterFrom, clearFiltering, sortType} = this.props;
